@@ -99,7 +99,8 @@ html, body {
   
   .hero {
     background-image: url('hero-background.jpg'); /* Optional: Add a background image */
-   
+    background-size: cover;
+    background-position: center;
   }
   
   footer {
@@ -129,44 +130,52 @@ html, body {
       height: 300px;
     }
   }
-  /* General Responsive Layout */
-@media (max-width: 768px) {
-    /* Hide the original navigation buttons */
-    .header-buttons {
-      display: none;
-    }
-  
-    /* Display the menu icon */
-    .menu-icon {
-      display: block;
-      font-size: 24px;
-      cursor: pointer;
-    }
-  
-    /* Show menu items vertically when the menu is expanded */
-    .header-buttons.responsive {
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      top: 50px;
-      width: 100%;
-      background-color: #333;
-    }
-  
-    /* Make header and elements fit smaller screens */
-    .header, .content, .footer {
-      padding: 10px;
-    }
+  /* General Styles */
+.menu-icon {
+    display: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
   }
   
-  /* Default Desktop View */
-  @media (min-width: 769px) {
+  /* Style for Navigation List */
+  .nav-list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .nav-list .nav-item {
+    margin: 0 15px;
+  }
+  
+  /* Mobile View */
+  @media (max-width: 768px) {
     .menu-icon {
+      display: block;
+    }
+    
+    .navbar-nav {
       display: none;
     }
+    
+    .navbar-nav.responsive {
+      display: block;
+      text-align: center;
+      background-color: #343a40; /* Dark background to match navbar */
+      position: absolute;
+      top: 56px; /* Adjust this value to place the menu below navbar */
+      width: 100%;
+    }
+    
+    .nav-list {
+      display: block;
+      padding: 10px;
+    }
   
-    .header-buttons {
-      display: flex;
+    .nav-list .nav-item {
+      margin: 10px 0;
     }
   }
   

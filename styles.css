@@ -130,52 +130,46 @@ html, body {
       height: 300px;
     }
   }
-  /* General Styles */
-.menu-icon {
-    display: none;
-    font-size: 24px;
+  /* Base styles for header menu items */
+.header-buttons {
+    display: none; /* Hidden by default for mobile */
+    flex-direction: column;
+    background-color: #343a40; /* Matches navbar bg color */
+  }
+  
+  .header-buttons .nav-link {
     color: white;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  /* Show header buttons in mobile view when active */
+  .header-buttons.responsive {
+    display: flex; /* Display as a column when active */
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+  }
+  
+  .menu-icon {
     cursor: pointer;
+    font-size: 1.5rem;
+    color: white;
+    display: block;
+    padding: 10px;
   }
   
-  /* Style for Navigation List */
-  .nav-list {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .nav-list .nav-item {
-    margin: 0 15px;
-  }
-  
-  /* Mobile View */
-  @media (max-width: 768px) {
+  /* Hide menu icon for desktop and show header normally */
+  @media (min-width: 992px) {
     .menu-icon {
-      display: block;
-    }
-    
-    .navbar-nav {
       display: none;
     }
-    
-    .navbar-nav.responsive {
-      display: block;
-      text-align: center;
-      background-color: #343a40; /* Dark background to match navbar */
-      position: absolute;
-      top: 56px; /* Adjust this value to place the menu below navbar */
-      width: 100%;
-    }
-    
-    .nav-list {
-      display: block;
-      padding: 10px;
-    }
-  
-    .nav-list .nav-item {
-      margin: 10px 0;
+    .header-buttons {
+      display: flex; /* Show items inline */
+      position: static;
+      flex-direction: row;
     }
   }
   

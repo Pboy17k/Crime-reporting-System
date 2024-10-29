@@ -133,7 +133,7 @@ html, body {
   /* Base styles for header menu items */
 .header-buttons {
     display: none; /* Hidden by default for mobile */
-    flex-direction: column;
+    flex-direction: row;
     background-color: #343a40; /* Matches navbar bg color */
   }
   

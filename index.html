@@ -18,6 +18,8 @@
     <a class="navbar-brand" href="index.html">Crime Reporting System</a>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
+        <!-- Place this in your header section -->
+<div class="menu-icon" onclick="toggleMenu()">☰</div>
         <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="aboutus.html">About Us</a></li>
         <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
@@ -27,14 +29,14 @@
       </ul>
     </div>
   </nav>
-  <header class="hero bg-light text-center py-0.01">
+  <header class="hero bg-light text-center py-0.5">
     <h1>Welcome to the Crime Reporting System</h1>
     <p>Your safety is our priority. Together, we can make a difference.</p>
   </header>
    <!-- Recent Alerts Section -->
    <section class="recent-alerts-section py-0.5 bg-grey">
     <div class="container text-center">
-      <h2>Recent Alerts</h2>
+      <h3>Recent Alerts</h3>
       <p class="text-muted">Stay updated with recent crime reports in your community.</p>
       <marquee direction="left" class="mt-1">Alert: Armed Robbery reported in Kubwa | Alert: Kidnapping attempt foiled by armed police in Wuse | Alert: Fraud case reported in Wuse zone 3</marquee>
     </div>
@@ -323,6 +325,11 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>function toggleMenu() {
+    const headerButtons = document.querySelector('.header-buttons');
+    headerButtons.classList.toggle('responsive');
+  }
+  </script>
   <script>
     async function fetchReports() {
         try {

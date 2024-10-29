@@ -99,8 +99,7 @@ html, body {
   
   .hero {
     background-image: url('hero-background.jpg'); /* Optional: Add a background image */
-    background-size: cover;
-    background-position: center;
+   
   }
   
   footer {
@@ -128,6 +127,46 @@ html, body {
   @media (max-width: 768px) {
     .carousel-item img {
       height: 300px;
+    }
+  }
+  /* General Responsive Layout */
+@media (max-width: 768px) {
+    /* Hide the original navigation buttons */
+    .header-buttons {
+      display: none;
+    }
+  
+    /* Display the menu icon */
+    .menu-icon {
+      display: block;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  
+    /* Show menu items vertically when the menu is expanded */
+    .header-buttons.responsive {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 50px;
+      width: 100%;
+      background-color: #333;
+    }
+  
+    /* Make header and elements fit smaller screens */
+    .header, .content, .footer {
+      padding: 10px;
+    }
+  }
+  
+  /* Default Desktop View */
+  @media (min-width: 769px) {
+    .menu-icon {
+      display: none;
+    }
+  
+    .header-buttons {
+      display: flex;
     }
   }
   

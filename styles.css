@@ -130,46 +130,4 @@ html, body {
       height: 300px;
     }
   }
-  /* Base styles for header menu items */
-.header-buttons {
-    display: none; /* Hidden by default for mobile */
-    flex-direction: row;
-    background-color: #343a40; /* Matches navbar bg color */
-  }
-  
-  .header-buttons .nav-link {
-    color: white;
-    padding: 10px;
-    text-align: center;
-  }
-  
-  /* Show header buttons in mobile view when active */
-  .header-buttons.responsive {
-    display: flex; /* Display as a column when active */
-    position: absolute;
-    top: 50px;
-    left: 0;
-    width: 100%;
-    z-index: 10;
-  }
-  
-  .menu-icon {
-    cursor: pointer;
-    font-size: 1.5rem;
-    color: white;
-    display: block;
-    padding: 10px;
-  }
-  
-  /* Hide menu icon for desktop and show header normally */
-  @media (min-width: 992px) {
-    .menu-icon {
-      display: none;
-    }
-    .header-buttons {
-      display: flex; /* Show items inline */
-      position: static;
-      flex-direction: row;
-    }
-  }
   

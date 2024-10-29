@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crime Reporting System - Report a Crime</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <style>
+    /* General layout styling */
+    body, html {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+    }
+    .content {
+      flex: 1;
+    }
+    /* Footer styling */
+    .footer {
+      background-color: #343a40;
+      color: white;
+      padding: 5px 0; /* Reduced padding for smaller footer */
+      text-align: center;
+      margin-top: 20px; /* Added space between map and footer */
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="home.html">Crime Reporting System</a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="aboutus.html">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="report.html">Report</a></li>
+        <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+        <li class="nav-item"><a class="nav-link" href="signup.html">Signup</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Report a Crime Content -->
+  <div class="content container mt-5">
+    <h2 class="text-center">Report a Crime</h2>
+    <form>
+      <div class="form-group">
+        <label for="crimeType">Type of Crime</label>
+        <select class="form-control" id="crimeType" required>
+          <option value="" disabled selected>Select type of crime</option>
+          <option value="armed robbery">Armed Robbery</option>
+          <option value="kidnapping">Kidnapping</option>
+          <option value="assault">Assault</option>
+          <option value="burglary">Burglary</option>
+          <option value="fraud">Fraud</option>
+          <option value="vandalism">Vandalism</option>
+          <option value="cultism">Cultism</option>
+          <option value="human trafficking">Human Trafficking</option>
+          <option value="boko haram">Boko Haram</option>
+          <option value="banditry">Banditry</option>
+          <option value="piracy">Piracy</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="crimeDescription">Description</label>
+        <textarea class="form-control" id="crimeDescription" rows="4" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="crimeLocation">Location</label>
+        <input type="text" class="form-control" id="crimeLocation" required>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="crimeDate">Date of Incident</label>
+          <input type="date" class="form-control" id="crimeDate" required>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="crimeTime">Time of Incident</label>
+          <input type="time" class="form-control" id="crimeTime" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="mediaUpload">Upload Media (Images/Videos)</label>
+        <input type="file" class="form-control-file" id="mediaUpload" accept="image/*,video/*">
+        <small class="form-text text-muted">You can upload images or videos related to the incident.</small>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit Report</button>
+    </form>
+  </div>
+
+  <!-- Map Container -->
+  <div class="container mt-5">
+    <h3 class="text-center">Your Location</h3>
+    <p class="text-center">The map below shows your current location:</p>
+    <div id="map" style="height: 400px; width: 100%;"></div>
+  </div>
+<br>
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2023 Crime Reporting System</p>
+    <div class="social-icons float left"></div>
+      <a href="https://www.facebook.com" target="_blank" class="text-white mx-2"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.twitter.com" target="_blank" class="text-white mx-2"><i class="fab fa-twitter"></i></a>
+      <a href="https://www.instagram.com" target="_blank" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com" target="_blank" class="text-white mx-2"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </footer>
+
+  <!-- JavaScript for Leaflet and Location -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+  <script>
+    // Initialize the map and set its view to a default location in Nigeria
+    var map = L.map('map').setView([9.0820, 8.6753], 6); // Centered on Nigeria
+
+    // Add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    // Geolocation
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        function(position) {
+          var lat = position.coords.latitude;
+          var lon = position.coords.longitude;
+          map.setView([lat, lon], 13);
+
+          // Add marker for user's location
+          L.marker([lat, lon]).addTo(map)
+            .bindPopup("Your current location")
+            .openPopup();
+        },
+        function(error) {
+          console.error("Geolocation error:", error);
+        }
+      );
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
+  </script>
+  
+</body>
+</html>
